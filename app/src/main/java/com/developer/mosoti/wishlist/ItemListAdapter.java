@@ -1,23 +1,25 @@
 package com.developer.mosoti.wishlist;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
+
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
+
 import com.squareup.picasso.Picasso;
 
-import java.security.PrivateKey;
+import org.parceler.Parcels;
+
+
 import java.util.ArrayList;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
+
 
 /**
  * Created by mosoti on 10/3/17.
@@ -48,7 +50,7 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.ItemVi
        // Log.v("items",mItems.get(0).getName());
         return mItems.size();
     }
-    public class ItemViewHolder extends RecyclerView.ViewHolder{
+    public class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView mNameView;
         private ImageView imageView;
         private TextView mPriceView;
@@ -63,7 +65,17 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.ItemVi
 
 
             mContext=itemView.getContext();
+            itemView.setOnClickListener(this);
 
+        }
+
+        @Override
+        public void onClick(View v) {
+            int itemPosition = getLayoutPosition();
+            Intent intent = new Intent(mContext, ItemDetailActivity.class);
+            intent.putExtra("position", itemPosition);
+            intent.putExtra("items", Parcels.wrap(mItems));
+            mContext.startActivity(intent);
         }
         public void bindItem(Item item){
 

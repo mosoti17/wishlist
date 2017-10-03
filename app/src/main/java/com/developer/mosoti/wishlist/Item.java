@@ -1,11 +1,13 @@
 package com.developer.mosoti.wishlist;
 
+import org.parceler.Parcel;
+
 import java.util.ArrayList;
 
 /**
  * Created by mosoti on 10/2/17.
  */
-
+@Parcel
 public class Item {
     private Integer itemid;
     private double price;

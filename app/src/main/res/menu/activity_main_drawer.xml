@@ -5,13 +5,13 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/add"
+            android:id="@+id/additems"
             android:icon="@drawable/ic_add_circle_outline_black_24dp"
-            android:title="Add Wishlist" />
+            android:title="Add Items To Wishlist" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/wishlist"
+            android:icon="@drawable/ic_bookmark_border_black_24dp"
+            android:title="My Wish lists" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"

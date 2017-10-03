@@ -1,9 +1,11 @@
 package com.developer.mosoti.wishlist;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,13 +16,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mAuth = FirebaseAuth.getInstance();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -61,8 +67,17 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+
+        if (mAuth.getCurrentUser()==null){
+            MenuItem item= menu.findItem(R.id.logout);
+            item.setVisible(false);
+        }else{
+            MenuItem item= menu.findItem(R.id.login);
+            item.setVisible(false);
+        }
         return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -72,8 +87,12 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+
+        if (id == R.id.login) {
             return true;
+        }
+        if (id== R.id.logout){
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -85,10 +104,40 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.add) {
+        if (id == R.id.additems) {
             Intent intent= new Intent(MainActivity.this,CreatelistActivity.class);
             startActivity(intent);
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.wishlist) {
+            if (mAuth.getCurrentUser()==null){
+
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+                alertDialogBuilder.setMessage("You are not Signed In Do you want to Sign In?");
+
+                alertDialogBuilder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent= new Intent(MainActivity.this,LoginActivity.class);
+                        startActivity(intent);
+
+                    }
+                });
+
+                alertDialogBuilder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //what to do if user clicks no
+
+                    }
+                });
+
+                alertDialogBuilder.create().show();
+
+            }else{
+                Intent intent= new Intent(MainActivity.this,WishlistsActivity.class);
+                startActivity(intent);
+            }
+
 
         } else if (id == R.id.nav_slideshow) {
 

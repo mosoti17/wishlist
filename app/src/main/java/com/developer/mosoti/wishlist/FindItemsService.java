@@ -68,12 +68,17 @@ public class FindItemsService {
 
 
                     ArrayList<String> images= new ArrayList<>();
-                    JSONArray imageJSON= itemJSON.getJSONArray("imageEntities");
-                    for (int j=0;j<imageJSON.length();j++){
-                        JSONObject tumb=imageJSON.getJSONObject(j);
-                        images.add(tumb.getString("thumbnailImage"));
+
+                    if (itemJSON.has("imageEntities")){
+                        JSONArray imageJSON= itemJSON.getJSONArray("imageEntities");
+                        for (int j=0;j<imageJSON.length();j++){
+                            JSONObject tumb=imageJSON.getJSONObject(j);
+                            images.add(tumb.getString("thumbnailImage"));
+
+                        }
 
                     }
+
                     String description;
                     if (itemJSON.has("sshortDescription")){
                         description=itemJSON.getString("shortDescription");
