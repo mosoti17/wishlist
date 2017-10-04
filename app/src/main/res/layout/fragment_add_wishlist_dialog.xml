@@ -1,0 +1,88 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.developer.mosoti.wishlist.AddWishlistDialog">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/linearLayout">
+
+        <EditText
+            android:id="@+id/addName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:hint="Wihlist name"
+            android:inputType="textEmailAddress"
+            android:nextFocusDown="@+id/passwordEditText"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@android:color/black"
+            android:textColorHint="#b22a4f"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/addDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:hint="Description"
+
+            android:nextFocusDown="@+id/passwordEditText"
+            android:padding="10dp"
+            android:textColor="@android:color/black"
+            android:textColorHint="#b22a4f"
+            android:textSize="20sp" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/cancelButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Cancel"
+                android:layout_gravity="left"
+                android:background="@color/colorAccent"
+                android:layout_marginTop="15dp"
+                android:textColor="#b22a4f" />
+
+            <Button
+                android:id="@+id/addButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignBaseline="@+id/cancelButton"
+                android:layout_alignBottom="@+id/cancelButton"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="right"
+                android:layout_marginEnd="23dp"
+                android:layout_marginRight="23dp"
+                android:background="@color/colorAccent"
+                android:padding="10dp"
+                android:text="Add"
+                android:textColor="#b22a4f" />
+
+        </RelativeLayout>
+
+
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>
