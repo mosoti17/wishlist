@@ -4,6 +4,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.developer.mosoti.wishlist.adapters.ItemPageAdapter;
+import com.developer.mosoti.wishlist.models.Item;
+
 import org.parceler.Parcels;
 
 import java.util.ArrayList;

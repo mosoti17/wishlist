@@ -1,8 +1,11 @@
-package com.developer.mosoti.wishlist;
+package com.developer.mosoti.wishlist.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
+import com.developer.mosoti.wishlist.ItemDetailFragment;
+import com.developer.mosoti.wishlist.models.Item;
 
 import java.util.ArrayList;
 

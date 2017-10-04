@@ -1,7 +1,10 @@
-package com.developer.mosoti.wishlist;
+package com.developer.mosoti.wishlist.services;
 
 
 import android.util.Log;
+
+import com.developer.mosoti.wishlist.Constants;
+import com.developer.mosoti.wishlist.models.Item;
 
 import org.json.JSONArray;
 import org.json.JSONException;

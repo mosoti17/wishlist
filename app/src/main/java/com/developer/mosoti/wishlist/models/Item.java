@@ -1,4 +1,4 @@
-package com.developer.mosoti.wishlist;
+package com.developer.mosoti.wishlist.models;
 
 import org.parceler.Parcel;
 

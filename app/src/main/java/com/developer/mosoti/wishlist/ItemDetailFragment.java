@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.developer.mosoti.wishlist.models.Item;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;

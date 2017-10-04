@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,11 +13,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
 
+import com.developer.mosoti.wishlist.adapters.ItemListAdapter;
+import com.developer.mosoti.wishlist.models.Item;
+import com.developer.mosoti.wishlist.services.FindItemsService;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import okhttp3.Call;
 import okhttp3.Response;
 

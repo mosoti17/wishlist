@@ -1,4 +1,4 @@
-package com.developer.mosoti.wishlist;
+package com.developer.mosoti.wishlist.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +12,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import com.developer.mosoti.wishlist.ItemDetailActivity;
+import com.developer.mosoti.wishlist.R;
+import com.developer.mosoti.wishlist.models.Item;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
