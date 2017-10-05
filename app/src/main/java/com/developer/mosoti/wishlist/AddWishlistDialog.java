@@ -4,6 +4,7 @@ package com.developer.mosoti.wishlist;
 import android.app.DialogFragment;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,14 +45,19 @@ public class AddWishlistDialog extends DialogFragment {
                             .getInstance()
                             .getReference("Wishlists")
                             .child(uid);
+
                     DatabaseReference pushRef = restaurantRef.push();
+                    String postId = pushRef.getKey();
 
 
 
-                    wishModel wish= new wishModel(name,details);
+                    wishModel wish= new wishModel(name,details,postId);
                     pushRef.setValue(wish);
 
                     dismiss();
+
+                }else{
+                    Log.v("not sending","not sending");
 
                 }
 

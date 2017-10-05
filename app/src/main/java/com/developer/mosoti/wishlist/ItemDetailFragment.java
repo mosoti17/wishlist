@@ -1,8 +1,11 @@
 package com.developer.mosoti.wishlist;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +14,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.developer.mosoti.wishlist.models.Item;
+import com.developer.mosoti.wishlist.ui.wishesDialog;
 import com.squareup.picasso.Picasso;
 
+import org.parceler.Parcel;
 import org.parceler.Parcels;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -49,6 +56,7 @@ public class ItemDetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mItem = Parcels.unwrap(getArguments().getParcelable("item"));
+
     }
 
 
@@ -64,9 +72,25 @@ public class ItemDetailFragment extends Fragment {
         mPriceView.setText("Price $: "+String.valueOf(mItem.getPrice()));
         mAvailabilityView.setText("Availability: "+mItem.getAvailability());
         mStockView.setText("Stock: "+mItem.getStock());
+        mSaveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fm = getFragmentManager();
+                wishesDialog moodDialogFragment = new wishesDialog ();
+                Bundle bundle=new Bundle();
+                bundle.putParcelable("item", Parcels.wrap(mItem));
+                moodDialogFragment.setArguments(bundle);
+                moodDialogFragment.show(fm,mItem.toString());
+
+
+
+            }
+        });
 
         return view;
 
     }
+
+
 
 }

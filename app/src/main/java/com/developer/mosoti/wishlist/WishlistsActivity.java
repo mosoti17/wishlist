@@ -41,7 +41,7 @@ public class WishlistsActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
-        mRestaurantReference = FirebaseDatabase.getInstance().getReference("Wishlists").child(uid);;
+        mRestaurantReference = FirebaseDatabase.getInstance().getReference("Wishlists").child(uid);
 
 
         setUpFirebaseAdapter();

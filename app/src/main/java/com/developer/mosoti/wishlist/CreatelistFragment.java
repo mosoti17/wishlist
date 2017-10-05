@@ -16,6 +16,7 @@ import android.widget.SearchView;
 import com.developer.mosoti.wishlist.adapters.ItemListAdapter;
 import com.developer.mosoti.wishlist.models.Item;
 import com.developer.mosoti.wishlist.services.FindItemsService;
+import com.developer.mosoti.wishlist.services.TrendingService;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -52,6 +53,7 @@ public class CreatelistFragment extends Fragment  {
 
         View view= inflater.inflate(R.layout.fragment_createlist, container, false);
          mRecyclerView=(RecyclerView) view.findViewById( R.id.recyclerview);
+         findItems();
 
         setHasOptionsMenu(true);
         return view;
@@ -114,6 +116,38 @@ public class CreatelistFragment extends Fragment  {
                     }
                 });
             }
+
+            }
+
+        });
+    }
+
+    public void findItems(){
+        final FindItemsService storeService= new FindItemsService();
+        TrendingService.findVOD( new okhttp3.Callback(){
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                //String jsonData = response.body().string();
+                // Log.v("data", jsonData);
+                mItems = FindItemsService.processResults(response);
+                if (getActivity()!=null) {
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            mAdapter = new ItemListAdapter(getContext(), mItems);
+                            mRecyclerView.setAdapter(mAdapter);
+                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+                            mRecyclerView.setLayoutManager(layoutManager);
+                            mRecyclerView.setHasFixedSize(false);
+//
+                        }
+                    });
+                }
 
             }
 

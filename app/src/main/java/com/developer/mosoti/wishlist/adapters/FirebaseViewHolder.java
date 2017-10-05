@@ -28,10 +28,10 @@ public class FirebaseViewHolder extends RecyclerView.ViewHolder{
         TextView nameTextView = (TextView) mView.findViewById(R.id.textName);
         TextView descTextView = (TextView) mView.findViewById(R.id.texDesc);
 
-        Log.v("name",String.valueOf(wish.getName()));
+        Log.v("name",String.valueOf(wish.getname()));
 
-        nameTextView.setText(wish.getName());
-        descTextView.setText(wish.getDescription());
+        nameTextView.setText(wish.getname());
+        descTextView.setText(wish.getdescription());
 
     }
 
